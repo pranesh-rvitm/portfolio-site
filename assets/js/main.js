@@ -262,3 +262,26 @@
     new PureCounter();
 
 })()
+
+
+
+document.getElementById("myForm").addEventListener("submit", function(event) {
+    event.preventDefault(); // Prevent the form from submitting and page refreshing
+
+    // Perform form submission via AJAX or fetch request
+    // Example using fetch:
+    fetch("https://fabform.io/f/vIJMG0Y", {
+            method: "POST",
+            body: new FormData(event.target)
+        })
+        .then(function(response) {
+            if (response.ok) {
+                // Show the thank-you message
+                document.getElementById("thankYouMessage").style.display = "block";
+            }
+        })
+        .catch(function(error) {
+            // Handle any errors that occur during form submission
+            console.error(error);
+        });
+});
