@@ -266,22 +266,24 @@
 
 
 document.getElementById("myForm").addEventListener("submit", function(event) {
-    event.preventDefault(); // Prevent the form from submitting and page refreshing
+    event.preventDefault();
 
-    // Perform form submission via AJAX or fetch request
-    // Example using fetch:
-    fetch("https://fabform.io/f/vIJMG0Y", {
+    // Show the loading message
+    document.getElementById("loadingMessage").style.display = "block";
+
+    fetch("https://formsubmit.co/bkakkamallan28@gmail.com", {
             method: "POST",
             body: new FormData(event.target)
         })
         .then(function(response) {
+            // Hide the loading message
+            document.getElementById("loadingMessage").style.display = "none";
+
             if (response.ok) {
-                // Show the thank-you message
                 document.getElementById("thankYouMessage").style.display = "block";
             }
         })
         .catch(function(error) {
-            // Handle any errors that occur during form submission
             console.error(error);
         });
 });
